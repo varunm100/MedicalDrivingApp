@@ -1,0 +1,4 @@
+#Fri Mar 23 21:40:56 IST 2018
+base.0=/media/meta-knight/Varun's Lab/programming/programming/medical_flutter_app/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

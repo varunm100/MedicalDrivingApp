@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1048088817517",
+    "firebase_url": "https://medicalpickup.firebaseio.com",
+    "project_id": "medicalpickup",
+    "storage_bucket": "medicalpickup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048088817517:android:42fd098b6f03e1b9",
+        "android_client_info": {
+          "package_name": "com.vartech.medicalflutterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048088817517-20708a11tcbi5d46bdvosfm861urcqej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vartech.medicalflutterapp",
+            "certificate_hash": "66148dbcc27f411763bad153dc638d13e4051a9a"
+          }
+        },
+        {
+          "client_id": "1048088817517-ag9j22ehv2acudf0ap6el4p5tkdf0enq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhTF1pP9yshm3uqvCiQ5elpGhjK2G33K8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048088817517-ag9j22ehv2acudf0ap6el4p5tkdf0enq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

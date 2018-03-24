@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1048088817517-ag9j22ehv2acudf0ap6el4p5tkdf0enq.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://medicalpickup.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1048088817517</string>
+    <string name="google_api_key" translatable="false">AIzaSyAhTF1pP9yshm3uqvCiQ5elpGhjK2G33K8</string>
+    <string name="google_app_id" translatable="false">1:1048088817517:android:42fd098b6f03e1b9</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAhTF1pP9yshm3uqvCiQ5elpGhjK2G33K8</string>
+    <string name="google_storage_bucket" translatable="false">medicalpickup.appspot.com</string>
+    <string name="project_id" translatable="false">medicalpickup</string>
+</resources>
