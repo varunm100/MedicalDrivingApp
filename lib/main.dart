@@ -9,28 +9,40 @@ final FirebaseAuth auth = FirebaseAuth.instance;
 final googleSignIn = new GoogleSignIn();
 final reference = FirebaseDatabase.instance.reference();
 
-void goToDriverDash(BuildContext context) {
-  print(context);
-  Navigator.of(context).pushNamed('/DriverDashboard');
+void goToDriverDash(BuildContext context, FirebaseUser _user) {
+  //Navigator.of(context).pushNamed('/DriverDashboard');
+  Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new DriverDashStateless(googleSignIn, _user)));
 }
 
 void SendDataToFirebase(FirebaseUser user, BuildContext context) {
   final uid = user.uid;
+  final driverRef = reference.child('drivers/');
   final UserRef = reference.child('drivers/$uid');
+
+  driverRef.child(uid).once().then((DataSnapshot snapshot) {
+    print('!!!!HEREE!!!!');
+    print(snapshot.key);
+    print(snapshot.value);
+  });
+
   UserRef.set({
     'DisplayName': user.displayName,
     'Email': user.email,
     'uid': user.uid,
     'photoUrl': user.photoUrl,
-    'verifiedBool': user.isEmailVerified
+    'verified': user.isEmailVerified,
+    'milesTravelled': 0,
+    'tripsTaken': 0,
+    'timeDriven': 0
   });
-  goToDriverDash(context);
+  print('!!!!AFTER!!!');
+  goToDriverDash(context, user);
 }
 
 void _testSignInWithGoogle(BuildContext context) async {
+  await googleSignIn.signOut();
   final GoogleSignInAccount googleUser = await googleSignIn.signIn();
-  final GoogleSignInAuthentication googleAuth =
-  await googleUser.authentication;
+  final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
   final FirebaseUser user = await auth.signInWithGoogle(
     accessToken: googleAuth.accessToken,
     idToken: googleAuth.idToken,
@@ -38,9 +50,7 @@ void _testSignInWithGoogle(BuildContext context) async {
   assert(user.email != null);
   assert(user.displayName != null);
   assert(!user.isAnonymous);
-  print("$user");
   //assert(await user.getIdToken() != null);
-
   final FirebaseUser currentUser = await auth.currentUser();
   assert(user.uid == currentUser.uid);
   SendDataToFirebase(currentUser, context);
@@ -63,9 +73,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Login Activity',
-      routes: <String, WidgetBuilder> {
-        '/DriverDashboard': (BuildContext context) => new Driverdash()
-      },
+      /*routes: <String, WidgetBuilder> {
+        '/DriverDashboard': (BuildContext context) => new Driverdash(googleSignIn, )
+      },*/
       theme: new ThemeData(
         // This is the theme of your application.
         //
@@ -75,7 +85,7 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
       home: new MyHomePage(title: 'Login Page'),
     );
